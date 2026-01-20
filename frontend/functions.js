@@ -42,7 +42,6 @@ document.addEventListener('DOMContentLoaded', () => {
     let canSend = true;
     
     const pauseQuery = () => {
-      canSend = false;
       let sendPause = setInterval(()=>{
         canSend = true;
         clearInterval(sendPause)
@@ -56,6 +55,7 @@ document.addEventListener('DOMContentLoaded', () => {
           alert("Please Wait 2 seconds for the next query")
           return;
         }
+        canSend = false;
         console.log('chat')
         const message = userInput.value.trim();
         if (!message) return;
