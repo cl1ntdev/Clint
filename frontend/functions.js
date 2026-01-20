@@ -39,7 +39,23 @@ document.addEventListener('DOMContentLoaded', () => {
 
     // --- Main Logic ---
 
+    let canSend = true;
+    
+    const pauseQuery = () => {
+      canSend = false;
+      let sendPause = setInterval(()=>{
+        canSend = true;
+        clearInterval(sendPause)
+      },2000)  
+    }
+    
+    
+    
     async function handleChat() {
+        if(!canSend){
+          alert("Please Wait 2 seconds for the next query")
+          return;
+        }
         console.log('chat')
         const message = userInput.value.trim();
         if (!message) return;
@@ -58,6 +74,8 @@ document.addEventListener('DOMContentLoaded', () => {
         // 4. Remove Loading and Add AI Response
         removeLoading(loadingId);
         appendMessage(data.reply, 'ai');
+        pauseQuery() // para ni dili ma spam goy
+
     }
 
     // --- UI Helper Functions ---
