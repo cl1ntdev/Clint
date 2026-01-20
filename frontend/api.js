@@ -3,6 +3,7 @@
 const BASE_URL = "https://xlintz-clint.hf.space"; 
 
 async function askBackend(message) {
+  console.log(message)
     try {
         const response = await fetch(`${BASE_URL}/ask`, {
             method: "POST",
