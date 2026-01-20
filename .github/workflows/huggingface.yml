@@ -17,7 +17,7 @@ jobs:
       - name: Push to hub
         env:
           HF_TOKEN: ${{ secrets.HF_TOKEN }}
-        run: 
+        run: | 
           # 1. Force push only the 'backend' folder to the 'main' branch of Hugging Face
             git subtree split --prefix backend -b hf-sync
             git push https://XlintZ:$HF_TOKEN@huggingface.co/spaces/XlintZ/Clint hf-sync:main --force
