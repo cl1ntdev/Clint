@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<link rel="stylesheet" href="frontend/index.css">
+	<title>Clint - Norsu Ai Assistant</title>
+</head>
+<body>
+    <div class="container">
+    
+        <div id="header-section">
+            <h1>I am Clint</h1>
+            <h2>NORSU Ai <span class="highlight"> Assistant</span></h2>
+        </div>
+    
+        <div id="chat-feed" class="chat-feed"></div>
+    
+        <div class="input-card">
+            
+            <div class="input-area">
+                <svg class="sparkle-icon" viewBox="0 0 24 24">
+                    <path d="M12 2L15.09 8.26L22 9.27L17 14.14L18.18 21.02L12 17.77L5.82 21.02L7 14.14L2 9.27L8.91 8.26L12 2Z"></path>
+                </svg>
+                <textarea id="user-input" rows="2" placeholder="Ask AI a question or make a request."></textarea>
+            </div>
+    
+            <div class="toolbar">
+                <div class="left-tools">
+                    <button class="btn" id="load-data-btn"> <svg width="16" height="16" viewBox="0 0 24 24">
+                            <path d="M21.44 11.05l-9.19 9.19a6 6 0 0 1-8.49-8.49l9.19-9.19a4 4 0 0 1 5.66 5.66l-9.2 9.19a2 2 0 0 1-2.83-2.83l8.49-8.48"></path>
+                        </svg>
+                        Load Data
+                    </button>
+                    </div>
+    
+                <div class="right-tools">
+                    <div class="citation-wrapper">
+                        <div class="toggle-switch"></div>
+                        Citation
+                    </div>
+                    <button id="send-btn" class="send-btn">
+                        <svg width="20" height="20" viewBox="0 0 24 24" stroke="white">
+                            <line x1="12" y1="19" x2="12" y2="5"></line>
+                            <polyline points="5 12 12 5 19 12"></polyline>
+                        </svg>
+                    </button>
+                </div>
+            </div>
+        </div>
+    </div>
+    
+    <script src="frontend/api.js"></script>
+    <script src="frontend/functions.js"></script>
+    
+</body>
+</html>

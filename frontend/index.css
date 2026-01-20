@@ -1,0 +1,284 @@
+/* General Reset and Font */
+* {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+    font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
+    -webkit-font-smoothing: antialiased; /* Makes text sharper on Mac */
+}
+
+body {
+    background-color: #f8f9fc; /* Slightly cooler grey */
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh; /* Fixed height for chat app feel */
+    color: #111;
+    overflow: hidden; /* Prevent body scroll, handle inside container */
+}
+
+/* Main Container */
+.container {
+    width: 100%;
+    max-width: 1400px; /* Slightly wider for better reading */
+    height: 100%;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    padding: 5px 5px;
+    position: relative;
+}
+
+
+
+@keyframes breathe {
+    0% { transform: scale(1); box-shadow: 0 0 30px rgba(155, 39, 255, 0.4); }
+    50% { transform: scale(1.05); box-shadow: 0 0 50px rgba(155, 39, 255, 0.6); }
+    100% { transform: scale(1); box-shadow: 0 0 30px rgba(155, 39, 255, 0.4); }
+}
+
+/* 2. Typography */
+#header-section {
+    text-align: center;
+    transition: all 0.5s ease; /* Allows for smooth hiding later via JS if needed */
+}
+
+h1 {
+    font-size: 2rem;
+    font-weight: 600;
+    margin-bottom: 5px;
+    letter-spacing: -0.5px;
+    color: #333;
+}
+
+h2 {
+    font-size: 2rem;
+    font-weight: 400;
+    margin-bottom: 30px;
+    color: #888;
+    letter-spacing: -0.5px;
+}
+
+.highlight {
+    background: linear-gradient(90deg, blue, skyblue);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    font-weight: 600;
+}
+
+/* 3. Input Card (Glassmorphism) */
+.input-card {
+    background: rgba(255, 255, 255, 0.85); /* Translucent */
+    backdrop-filter: blur(12px); /* Blur effect */
+    width: 100%;
+    border-radius: 24px;
+    padding: 24px;
+    box-shadow: 0 8px 32px rgba(0, 0, 0, 0.08);
+    border: 1px solid rgba(255, 255, 255, 0.6);
+    display: flex;
+    flex-direction: column;
+    min-height: 160px;
+    transition: box-shadow 0.3s ease;
+}
+
+.input-card:focus-within {
+    box-shadow: 0 12px 40px rgba(124, 58, 237, 0.15); /* Purple glow on focus */
+    border-color: rgba(189, 66, 255, 0.3);
+}
+
+/* Input Field Area */
+.input-area {
+    flex-grow: 1;
+    display: flex;
+    align-items: flex-start;
+    gap: 12px;
+    margin-bottom: 15px;
+}
+
+.sparkle-icon {
+    width: 24px;
+    height: 24px;
+    fill: url(#gradient); /* Requires SVG generic definition or solid color */
+    color: #9b27ff;
+    flex-shrink: 0;
+    margin-top: 4px;
+}
+
+textarea {
+    width: 100%;
+    border: none;
+    resize: none;
+    font-size: 1.05rem;
+    line-height: 1.5;
+    outline: none;
+    color: #1a1a1a;
+    background: transparent;
+}
+
+textarea::placeholder {
+    color: #9ca3af;
+}
+
+/* Toolbar */
+.toolbar {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding-top: 10px;
+    border-top: 1px solid rgba(0,0,0,0.05);
+}
+
+.left-tools {
+    display: flex;
+    gap: 10px;
+}
+
+.right-tools {
+    display: flex;
+    align-items: center;
+    gap: 15px;
+}
+
+/* Buttons */
+.btn {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    padding: 8px 16px;
+    border-radius: 20px;
+    border: 1px solid transparent;
+    background: #f3f4f6;
+    color: #4b5563;
+    font-size: 0.85rem;
+    font-weight: 500;
+    cursor: pointer;
+    transition: all 0.2s ease;
+}
+
+.btn:hover {
+    background-color: #ede9fe; /* Light purple tint */
+    color: #7c3aed;
+}
+
+.send-btn {
+    background: linear-gradient(135deg, #1a1a1a, #333);
+    color: white;
+    width: 40px;
+    height: 40px;
+    border-radius: 14px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    border: none;
+    cursor: pointer;
+    transition: transform 0.1s ease, box-shadow 0.2s ease;
+}
+
+.send-btn:hover {
+    box-shadow: 0 4px 12px rgba(0,0,0,0.2);
+    transform: translateY(-1px);
+}
+
+.send-btn:active {
+    transform: scale(0.95);
+}
+
+/* Citation Toggle */
+.citation-wrapper {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    font-size: 0.85rem;
+    font-weight: 500;
+    color: #6b7280;
+    cursor: pointer;
+}
+
+.toggle-switch {
+    width: 32px;
+    height: 18px;
+    background-color: #e5e7eb;
+    border-radius: 20px;
+    position: relative;
+    transition: background-color 0.3s;
+}
+
+.toggle-switch.active { /* Add JS to toggle this class */
+    background-color: #9b27ff;
+}
+
+.toggle-switch::after {
+    content: '';
+    width: 14px;
+    height: 14px;
+    background: white;
+    border-radius: 50%;
+    position: absolute;
+    top: 2px;
+    left: 2px;
+    transition: transform 0.3s;
+    box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+}
+
+/* If you add .active class via JS, add this css:
+.toggle-switch.active::after { transform: translateX(14px); }
+*/
+
+/* Chat Feed Area */
+.chat-feed {
+    width: 100%;
+    flex-grow: 1; /* Takes up all available space */
+    overflow-y: auto;
+    margin-bottom: 20px;
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+    padding: 10px 5px; /* Slight padding for scrollbar clearance */
+    scrollbar-width: thin; /* Firefox */
+    scrollbar-color: #cbd5e1 transparent;
+}
+
+/* Custom Scrollbar for Chrome/Safari */
+.chat-feed::-webkit-scrollbar {
+    width: 6px;
+}
+.chat-feed::-webkit-scrollbar-track {
+    background: transparent;
+}
+.chat-feed::-webkit-scrollbar-thumb {
+    background-color: #cbd5e1;
+    border-radius: 10px;
+}
+
+/* Message Bubbles */
+.message {
+    padding: 16px 20px;
+    border-radius: 18px;
+    max-width: 85%;
+    line-height: 1.6;
+    font-size: 1rem;
+    animation: fadeIn 0.4s ease;
+    position: relative;
+}
+
+.message.user {
+    align-self: flex-end;
+    background: #f3f4f6;
+    color: #1f2937;
+    border-bottom-right-radius: 4px; /* Distinct styling */
+}
+
+.message.ai {
+    align-self: flex-start;
+    /* Added background for better legibility compared to transparent */
+    background: white; 
+    border: 1px solid #f0f0f0;
+    color: #374151;
+    border-bottom-left-radius: 4px;
+    box-shadow: 0 2px 5px rgba(0,0,0,0.02);
+}
+
+@keyframes fadeIn {
+    from { opacity: 0; transform: translateY(10px); }
+    to { opacity: 1; transform: translateY(0); }
+}
